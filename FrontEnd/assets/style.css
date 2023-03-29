@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500&family=Work+Sans:wght@500;700;800&display=swap');
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,11 +24,13 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	cursor: default;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
+	color: #3D3D3D;
 }
 body {
 	line-height: 1;
@@ -48,6 +52,7 @@ table {
 }
 /** end reset css**/
 body {
+	background-color: #FFFEF8;
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
@@ -91,12 +96,25 @@ nav ul {
 
 }
 nav li {
-	padding: 0 10px;
 	font-size: 1.2em;
+	padding: 0 25px;
+  font-weight: 500;
+}
+nav li img {
+  width: 20px;
+}
+header span {
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+	font-weight: 500;
 }
 
-li:hover {
-	color: #B1663C;
+header li:hover {
+	color: black;
+	font-weight: 900;
+}
+nav .bold-log {
+	cursor:pointer;
 }
 #introduction {
 	display: flex;
@@ -125,20 +143,49 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+#filterList {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+#filterList button{
+	font-family: 'Syne';
+	color: #1D6154;
+	background-color: #FFFEF8;
+	font-weight: 700;
+	font-size: 16px;
+	list-style-type: none;
+	border: 1px solid #1D6154;
+	border-radius: 2rem;
+	padding: 7px 20px;
+	margin: 1rem 0 3rem;
+	cursor: pointer;
+	transition: 0.3s ease;
+}
+
+#filterList button:hover {
+	color: white;
+	background-color: #1D6154;
+}
+#filterList button:focus{
+	background-color: #1D6154;
+	color: white;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	overflow: hidden;
 }
-
 .gallery img {
 	width: 100%;
-
 }
+
 #contact {
-	width: 50%;
+	width: 33%;
 margin: auto;
 }
 #contact > * {
@@ -148,25 +195,33 @@ margin: auto;
 #contact h2{
 	margin-bottom: 20px;
 }
+#contact p {
+	font-size: 1.2em;
+}
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top:10px;
 	display: flex;
 	flex-direction: column;
 }
 
 #contact input {
-	height: 50px;
-	font-size: 1.2em;
+	height: 40px;
+	font-size: 1.1em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	font-weight: 500;
 }
 #contact label {
-	margin: 2em 0 1em 0;
+	margin: 2em 0 0.6em 0;
+	font-weight: 500;
+  font-size: 15px;
 }
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	resize: none;
+	
 }
 
 input[type="submit"]{
@@ -184,5 +239,10 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+footer nav li {
+	font-size: 1em;
+	font-weight: 400;
 }
 

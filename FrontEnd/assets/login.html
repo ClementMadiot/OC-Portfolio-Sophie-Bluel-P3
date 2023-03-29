@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+
+  <header>
+    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+    <nav>
+      <ul>
+        <li>projets</li>
+        <li>contact</li>
+        <li class="bold-log">login</li>
+        <li><img src="./icons/instagram.png" alt="Instagram"></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="contact">
+      <h2>Login</h2>
+
+      
+      <form id="form" method="post" action="">
+        
+        <div class="email-container">
+          <label for="email">E-mail</label>
+          <input type="email" utocomplete="off" name="email" id="login-email">
+        </div>
+        
+        <div class="password-container">
+          <label for="password" name="password">Mot de passe</label>
+          <input type="password" utocomplete="off" name="password" id="login-password">
+        </div>
+        
+        <div id="login-error">email ou mot de passe incorrect</div>
+
+          <div class="submit-container"><input type="submit" value="Se connecter" id="signin-submit" ></div>
+
+        <div id="forget-password"><a href="#">Mot de passe oublié</a></div>
+
+      </form>
+    </section>
+  </main>
+  <footer>
+    <nav>
+      <ul>
+        <li>Mentions Légales</li>
+      </ul>
+    </nav>
+  </footer>
+  <script src="./login.js"></script>
+  <!-- <script src="./index.js"></script> -->
+</body>
+</html>

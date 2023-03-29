@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500&family=Work+Sans:wght@500;700;800&display=swap');
+
+nav .bold-log {
+  cursor: default;
+}
+main {
+  margin-top: 10rem;
+}
+form > div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+div > label,
+div > span {
+  display: flex;
+  justify-content: flex-start
+}
+#login-error {
+  color: red;
+  margin-top: 10px;
+  /* visibility: hidden; */
+  opacity: 0;
+  transition: 0.3s;
+}
+#contact h2 {
+  margin-bottom: 0;
+}
+#contact input[type="submit"]{
+  cursor: pointer;
+}
+#forget-password {
+  text-align: center;
+}
+#forget-password a{
+  color: #3D3D3D;
+  text-align: center;
+  font-weight: 500;
+}
+footer nav li {
+  margin-top: 10rem;
+}

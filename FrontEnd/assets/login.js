@@ -4,8 +4,6 @@
 
 //* Fetch login
 
-
-
 function fetchLogin(email, password) {
   /// () parametre
   fetch("http://localhost:5678/api/users/login", {
@@ -19,13 +17,22 @@ function fetchLogin(email, password) {
       password: password,
     }),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error("Something wrong");
+    })
     .then((data) => {
       /// La syntaxe ajoute une entrée / stocke la paire clé/valeur
       window.localStorage.setItem("token", data.token);
       console.log(localStorage);
-    }) 
-    
+    })
+    .catch((error) => {
+      const loginError = document.getElementById("login-error");
+      loginError.style.opacity = 1
+        alert("There was an error", error);
+    });
 }
 const form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
@@ -36,42 +43,8 @@ form.addEventListener("submit", (e) => {
 
   if (email && password) {
     fetchLogin(email, password);
-  } 
-
-
-  var response;
-  const errorLogin = document.getElementById("login-error")
-
-  try {
-    response = window.localStorage.getItem("token", data.token);
-  } catch (error) {
-    if (response?.ok, res) {
-      errorLogin.style.opacity = 0
-      console.log("yes");
-      alert("Succesful", error);
-      res.status(200).json(response?.ok);
-    } else {
-      errorLogin.style.opacity = 1
-      console.log("no");
-      alert('There was an error', error);
-      res.status(404).json(!response.ok);
-
-    }
   }
-
 });
 
-
-
-
-
-
-
-
-
-
-
-    // const erreur = document.querySelector("error")
-    // if (localStorage.getItem("token")) { 
-    //   erreur.createElement
-    // }
+// sophie.bluel@test.tld
+//  S0phie

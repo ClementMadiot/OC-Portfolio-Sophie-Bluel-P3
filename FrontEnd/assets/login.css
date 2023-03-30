@@ -19,7 +19,6 @@ div > span {
 #login-error {
   color: red;
   margin-top: 10px;
-  /* visibility: hidden; */
   opacity: 0;
   transition: 0.3s;
 }

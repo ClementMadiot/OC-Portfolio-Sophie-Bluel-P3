@@ -19,6 +19,7 @@ function fetchLogin(email, password) {
   })
     .then((res) => {
       if (res.ok) {
+        window.location.href = "../index.html";
         return res.json();
       }
       throw new Error("Something wrong");
@@ -30,8 +31,8 @@ function fetchLogin(email, password) {
     })
     .catch((error) => {
       const loginError = document.getElementById("login-error");
-      loginError.style.opacity = 1
-        alert("There was an error", error);
+      loginError.style.opacity = 1;
+      alert("There was an error", error);
     });
 }
 const form = document.getElementById("form");
@@ -48,3 +49,7 @@ form.addEventListener("submit", (e) => {
 
 // sophie.bluel@test.tld
 //  S0phie
+
+
+//-----------------------------------
+

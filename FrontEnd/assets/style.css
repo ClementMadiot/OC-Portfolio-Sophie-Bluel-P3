@@ -5,7 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500&family=Work+Sans:wght@500;700;800&display=swap');
 
-html, body, div, span, applet, object, iframe,
+html, body,div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -24,13 +24,13 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	cursor: default;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 	color: #3D3D3D;
+	cursor: default;
 }
 body {
 	line-height: 1;
@@ -50,6 +50,15 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+button {
+	font-family: 'Syne';
+	color: white;
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
+	border-radius: 2rem;
+	padding: 5px 50px;
+	font-size: 1rem;
+}
 /** end reset css**/
 body {
 	background-color: #FFFEF8;
@@ -58,6 +67,9 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+/** Section header **/
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -113,12 +125,14 @@ header li:hover {
 	color: black;
 	font-weight: 900;
 }
-nav .bold-log {
+nav .btn-login {
 	cursor:pointer;
 }
+
+/** Section introduction **/
+
 #introduction {
 	display: flex;
-	align-items: center;
 }
 #introduction figure {
 	flex: 1
@@ -128,49 +142,50 @@ nav .bold-log {
 	margin: auto;
 	width: 80%;
 }
+#introduction figure p  {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+#introduction
+.btn-modal{
+	margin: 1rem 0;
+	font-weight: 500;
+}
 
 #introduction article {
 	flex: 1
 }
-#introduction h2 {
+#introduction article p {
 	margin-bottom: 1em;
+	max-width: 415px;
 }
-
+#introduction h2 {
+	margin-bottom: 1rem;
+}
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+
+/** Section portfolio **/
+
+/*/ Icone /*/
+
+.fa-regular{
+	font-size: 1.1rem;
 }
-#filterList {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-}
-#filterList button{
-	font-family: 'Syne';
-	color: #1D6154;
-	background-color: #FFFEF8;
-	font-weight: 700;
-	font-size: 16px;
-	list-style-type: none;
-	border: 1px solid #1D6154;
-	border-radius: 2rem;
-	padding: 7px 20px;
-	margin: 1rem 0 3rem;
+.btn-modal {
+	display: none;
 	cursor: pointer;
-	transition: 0.3s ease;
+}
+#edit-gallery {
+	cursor: pointer;
+}
+.active-popUp {
+	display: block !important;
 }
 
-#filterList button:hover {
-	color: white;
-	background-color: #1D6154;
-}
-#filterList button:focus{
-	background-color: #1D6154;
-	color: white;
-}
+/*/ Img /*/
 
 .gallery {
 	width: 100%;
@@ -183,6 +198,271 @@ nav .bold-log {
 .gallery img {
 	width: 100%;
 }
+
+#portfolio {
+	position: relative;
+	z-index: 1;
+}
+
+/*/ First Pop Up  /*/
+
+#portfolio .my-project,  
+#portfolio .btn-modal,
+#edit-gallery p {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: auto 0;
+	gap: 2rem;
+}
+#portfolio .btn-modal,
+#edit-gallery p {
+	gap: 0.5rem;
+}
+#portfolio h3{
+	color: black;
+	display: flex;
+	justify-content: center;
+	font-size: 1.6rem;
+	margin: 2rem 0;
+}
+#pop-up,
+#new-pop-up{
+	position: absolute;
+	width: 70%;
+	background-color: white;
+	border-radius: 10px;
+	z-index: 2;
+	top: 0.1%;
+	left: 15%;
+	display: none;
+	
+}
+#closeBtn,
+#closeBtn2 {
+	position: absolute;
+	right: 2rem;
+	top: 0.7rem;
+	cursor: pointer;
+	font-size: 1.3rem;
+	color: black;
+}
+
+#modalGallery {
+	width: 70%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-row-gap: 10px;
+	overflow: hidden;
+	margin: auto;
+}
+#modalGallery figure {
+	margin: 0 5px;
+	position: relative;
+}
+#modalGallery img {
+	width: 100%;
+}
+
+#modalGallery figcaption {
+	display: flex;
+	font-weight: 500;
+	font-size: 0.8rem;
+}
+.edit-bar {
+	content: "";
+	display: block;
+  width: 68%;
+	margin: auto;
+	margin-top: 3rem;
+  height: 2px;
+  background-color: rgb(217,217,217);
+}
+
+#pop-up .btn-add-post{
+	cursor: pointer;
+	margin: 2em auto;
+	position: relative;
+}
+#delete-galery a {
+	color: red;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 3rem;
+} 
+/*/ btn First Pop Up  /*/
+
+.btn-class {
+	position: absolute;
+	top: 5px;
+	right: 2px;
+}
+.btn-delete,
+.btn-move {
+	background: black;
+	border-color: black;
+	border-radius: 0%;
+	padding: 1px;
+	margin: 0 2px;
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+}
+.btn-class .fa-regular,
+.btn-class .fa-solid{
+	display: flex;
+	justify-content: center;
+	font-size: 11px;
+}
+.btn-move {
+	visibility: hidden;
+}
+
+
+
+/*/ Second Pop Up  /*/
+
+.new-pop-up-icon {
+	display: flex;
+	justify-content: space-between;
+	margin: 2rem;
+	font-size: 1.2rem;
+	cursor: pointer;
+}
+.new-post {
+	width: 70%;
+	margin: auto;
+}
+.add-new-post {
+	background-color: #E8F1F6;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	margin: 2rem 0;
+}
+.add-new-post .fa-solid{
+	margin-top: 1rem;
+	font-size: 3.5rem;
+	color: #CBD6DC;
+}
+.new-post div {
+	width: 100%;
+}
+
+/*/ Upload files /*/
+
+.drop-zone { /*/ la div = drop-zone*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+	flex-direction: column;
+}
+.drop-zone .fa-solid {
+	margin-bottom: 1rem;
+}
+.file-upload__button {
+	color: #306685;
+	background-color: #CBD6DC;
+	border-color: #CBD6DC;
+	margin: 0.5rem auto;
+	padding: 0.4rem 2rem;
+	cursor: pointer;
+	border-radius: 15px;
+}
+.drop-zone__thumb {/*/ div creer en js */ 
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-size: cover;
+	font-size: 20px;
+}
+.file-upload {
+	display: inline-flex;
+	justify-content: center;
+}
+.file-upload__input {
+	display: none;
+}
+.file-upload__button {
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+.add-new-post p{
+	font-size: 0.7rem;
+}
+#new-pop-up form{
+	display: flex;
+	flex-direction: column;
+}
+#new-pop-up label{
+	display: flex;
+	align-content: flex-start
+}
+#new-pop-up input,
+#new-pop-up select{
+	box-shadow: white 2px 1px 6px 3px;
+}
+#new-pop-up .confirm-post {
+	background-color: rgb(167,167,167);
+	cursor: pointer;
+}
+#new-pop-up .confirm-post:hover {
+	color: white;
+	background-color: #1D6154;
+}
+
+#new-pop-up input,
+#new-pop-up select {
+	padding: 1rem;
+	font-size: 1.1em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	font-weight: 500;
+}
+
+
+
+
+
+
+
+/** Section filterList **/
+
+#filterList {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+#filterList button{
+	color: #1D6154;
+	background-color: #FFFEF8;
+	font-weight: 700;
+	padding: 7px 20px;
+	margin: 1rem 0 3rem;
+	transition: 0.3s ease;
+}
+
+#filterList button:hover {
+	color: white;
+	background-color: #1D6154;
+}
+#filterList button:focus{
+	background-color: #1D6154;
+	color: white;
+}
+
+/** Section Contact **/
 
 #contact {
 	width: 33%;
@@ -212,7 +492,8 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	font-weight: 500;
 }
-#contact label {
+#contact label, 
+#new-pop-up label{
 	margin: 2em 0 0.6em 0;
 	font-weight: 500;
   font-size: 15px;

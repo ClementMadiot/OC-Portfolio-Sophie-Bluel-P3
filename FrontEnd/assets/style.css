@@ -34,7 +34,17 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+	position: relative;
 }
+.min-width{
+	margin: 0 auto;
+	max-width: 1140px;
+
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -59,21 +69,13 @@ button {
 	padding: 5px 50px;
 	font-size: 1rem;
 }
-/** end reset css**/
-body {
-	background-color: #FFFEF8;
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
-}
 
 /** Section header **/
 
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	padding-top: 2rem;
 }
 section {
 	margin: 50px 0
@@ -207,6 +209,16 @@ nav .btn-login {
 
 /*/ First Pop Up  /*/
 
+.background-opacity {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: 0.1;
+	top: 0;
+	display: none;
+}
+
 #portfolio .my-project,  
 #portfolio .btn-modal,
 #edit-gallery p {
@@ -221,7 +233,8 @@ nav .btn-login {
 #edit-gallery p {
 	gap: 0.5rem;
 }
-#portfolio h3{
+#pop-up h3,
+#new-pop-up h3{
 	color: black;
 	display: flex;
 	justify-content: center;
@@ -231,15 +244,16 @@ nav .btn-login {
 #pop-up,
 #new-pop-up{
 	position: absolute;
-	width: 70%;
 	background-color: white;
 	border-radius: 10px;
 	z-index: 2;
 	top: 0.1%;
-	left: 15%;
 	display: none;
-	
+	top: 15%;
+	width: 40%;
+	left: 30%;
 }
+
 #closeBtn,
 #closeBtn2 {
 	position: absolute;
@@ -283,6 +297,7 @@ nav .btn-login {
 }
 
 #pop-up .btn-add-post{
+	display: block;
 	cursor: pointer;
 	margin: 2em auto;
 	position: relative;
@@ -351,6 +366,10 @@ nav .btn-login {
 .new-post div {
 	width: 100%;
 }
+#new-pop-up input,
+#new-pop-up select{
+box-shadow: white 2px 1px 6px 3px;
+}
 
 /*/ Upload files /*/
 
@@ -407,10 +426,7 @@ nav .btn-login {
 	display: flex;
 	align-content: flex-start
 }
-#new-pop-up input,
-#new-pop-up select{
-	box-shadow: white 2px 1px 6px 3px;
-}
+
 #new-pop-up .confirm-post {
 	background-color: rgb(167,167,167);
 	cursor: pointer;
@@ -433,9 +449,28 @@ nav .btn-login {
 .confirm-pop-up {
 	position: absolute;
 	border: 1px solid red;
+	background-color: white;
+	padding: 1rem;
 	border-radius: 15px;
-	top: 50px;
+	top: 370px;
 	display: none;
+	z-index: 2;
+}
+.confirm-pop-up .fa-solid {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	cursor: pointer;
+	font-size: 20px;
+}
+.confirm-pop-up h4 {
+	margin-top: 3rem;
+	font-size: 1.2rem;
+}
+.confirm-post {
+	padding: 0.5rem;
+	border: 1px solid transparent;
+	cursor: pointer;
 }
 
 
@@ -526,7 +561,6 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
 }
 
 footer nav li {

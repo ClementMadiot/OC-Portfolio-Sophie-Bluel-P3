@@ -16,6 +16,10 @@ div > span {
   display: flex;
   justify-content: flex-start
 }
+header {
+  align-items: center;
+  justify-content: space-around
+}
 #login-error {
   color: red;
   margin-top: 10px;

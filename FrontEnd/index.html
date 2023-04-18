@@ -12,144 +12,130 @@
 	<script src="https://kit.fontawesome.com/2b2bc1d797.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li class="btn-login">login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-
-<main>
-
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-			<div class="btn-modal">
-				<p><i class="fa-regular fa-pen-to-square"></i> modifier </p>
-			</div>
-		</figure>
-
-		<article>
-			<div class="btn-modal">
-				<p><i class="fa-regular fa-pen-to-square"></i> modifier </p>
-			</div>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-
-
-
-	<section id="portfolio">
-
-		<div class="my-project">
-			<h2>Mes Projets</h2>
-			<div id="edit-gallery">
-				<p><i class="fa-regular fa-pen-to-square"></i>modifier</p>
-			</div>
-			
-			<!-- Fisrt pop-up -->
-				<div id="pop-up">
-					<i class="fa-solid fa-xmark" id="closeBtn"></i>
-					<h3>Galerie photo</h3>
-					<div id="modalGallery">
-					</div>
-					<div class="edit-bar"></div>
-					<button class="btn-add-post">Ajouter une photo</button>
-					<div id="delete-galery"><a href="">Supprimer la galerie</a></div>
+	<!-- Fisrt pop-up -->
+	<div id="pop-up">
+		<i class="fa-solid fa-xmark" id="closeBtn"></i>
+		<h3>Galerie photo</h3>
+				<div id="modalGallery">
 				</div>
-			
-				<!-- Second pop-up -->
-					<div id="new-pop-up">
-						<div class="new-pop-up-icon">
-							<i class="fa-solid fa-arrow-left" id="backBtn"></i>
-							<i class="fa-solid fa-xmark" id="closeBtn2"></i>
-						</div>
-
-						<h3>Ajout photo</h3>
-						<div class="new-post">
-
-							<div class="add-new-post">
-								<div class="drop-zone">
-								<div class="drop-zone-toggle">
-									<i class="fa-solid fa-image"></i>
-									<input class="file-upload__input" type="file" name="myFile" id="myFile">
-									<button class="file-upload__button" type="button">+ Ajouter photo</button>
-									<p>jpg,png : 4mo max</p>
-								</div>
-							</div>								
+				<div class="edit-bar"></div>
+				<button class="btn-add-post">Ajouter une photo</button>
+				<div id="delete-galery"><a href="">Supprimer la galerie</a></div>
+			</div>
+			<!-- Second pop-up -->
+			<div id="new-pop-up">
+				<div class="new-pop-up-icon">
+					<i class="fa-solid fa-arrow-left" id="backBtn"></i>
+					<i class="fa-solid fa-xmark" id="closeBtn2"></i>
+				</div>
+				
+				<h3>Ajout photo</h3>
+				<div class="new-post">
+					
+					<div class="add-new-post">
+						<div class="drop-zone">
+							<div class="drop-zone-toggle">
+								<i class="fa-solid fa-image"></i>
+								<input class="file-upload__input" type="file" name="myFile" id="myFile">
+								<button class="file-upload__button" type="button">+ Ajouter photo</button>
+								<p>jpg,png : 4mo max</p>
 							</div>
-							<form action="" method="post" id="form-New-Post">
-								<label for="title">Titre</label>
-								<input type="text" name="title" id="title">
-								<label for="category">Catégorie</label>
-								<select id="category">
-									<option value=""></option>
-									<option value="1">Objets</option>
-									<option value="2">Appartements</option>
-									<option value="3">Hotels & restaurants</option>
-								</select>
-								<div class="edit-bar"></div>
-								<input class="open-confirm-popUp" type="submit" value="Valider">
-							</form>
 						</div>
 					</div>
-
-					<!-- confirm pop-up -->
-					<div class="confirm-pop-up">
-						<div class="new-pop-up-icon">
-							<i class="fa-solid fa-xmark" id="closeBtn3"></i>
-						</div>
-						<h4>Clicker sur confirmer pour poster vôtre nouveau Post</h4>
-						<input class="confirm-post" type="submit" value="Valider">
-					</div>
-
-		</div>
-
-		<!-- button filter  -->
-		<div id="filterList">
-			<button class="btnAll" type="button" name="checked">Tous</button>
-		</div>
-
-		<div class="gallery">
-		</div>
-
-	</section>
-
-	<!-- Formulaire Contact  -->
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">E-mail</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10" ></textarea>
-			<input type="submit" value="Envoyer" id="contact-submit">
-		</form>
-	</section>
-</main>
-
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
+					<form action="" method="post" id="form-New-Post">
+						<label for="title">Titre</label>
+						<input type="text" name="title" id="title">
+						<label for="category">Catégorie</label>
+						<select id="category">
+							<option value=""></option>
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hotels & restaurants</option>
+						</select>
+						<div class="edit-bar"></div>
+						<input type="submit" value="Valider">
+					</form>
+				</div>
+			</div>
+			<div class="background-opacity"></div>
+			<div class="min-width">
+		
+		<header>
+			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+			<nav>
+				<ul>
+					<li>projets</li>
+					<li>contact</li>
+				<li class="btn-login">login</li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+		</header>
+		
+		<main>
+		
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+				<div class="btn-modal">
+					<p><i class="fa-regular fa-pen-to-square"></i> modifier </p>
+				</div>
+			</figure>
+		
+			<article>
+				<div class="btn-modal">
+					<p><i class="fa-regular fa-pen-to-square"></i> modifier </p>
+				</div>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+			</article>
+		</section>
+		
+		
+		
+		<section id="portfolio">
+		
+			<div class="my-project">
+				<h2>Mes Projets</h2>
+				<div id="edit-gallery">
+					<p><i class="fa-regular fa-pen-to-square"></i>modifier</p>
+				</div>
+		
+		
+			</div>
+			<!-- button filter  -->
+			<div id="filterList">
+				<button class="btnAll" type="button" name="checked">Tous</button>
+			</div>
+			<div class="gallery">
+			</div>
+		</section>
+		<!-- Formulaire Contact  -->
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">E-mail</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10" ></textarea>
+				<input type="submit" value="Envoyer" id="contact-submit">
+			</form>
+		</section>
+		</main>
+		
+		<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+		</footer>
+	</div>
 <script src="./assets/index.js"></script>
 </body>
 </html>
-<!-- <button class="btn-move">
-							<i class="fa-solid fa-arrows-up-down-left-right"></i>
-						</button>

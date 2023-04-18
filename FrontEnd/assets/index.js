@@ -40,7 +40,7 @@ function createFigure(card) {
 function editPopup(card) {
   /// Le block
   var figureModal = document.createElement("figure");
-  figureModal.dataset.number = card;
+  figureModal.dataset.number = card.id;
 
   /// Image
   var imgModal = document.createElement("img");
@@ -48,12 +48,12 @@ function editPopup(card) {
   imgModal.src = card.imageUrl;
   figureModal.appendChild(imgModal);
 
-  /// div des bouttons
+  /// div des boutons
   var classBtn = document.createElement("div");
   classBtn.classList.add("btn-class");
   figureModal.appendChild(classBtn);
 
-  /// boutton move
+  /// bouton move
   var btnMove = document.createElement("button");
   btnMove.innerHTML = '<i class="fa-solid fa-arrows-up-down-left-right">';
   btnMove.classList.add("btn-move");
@@ -66,21 +66,24 @@ function editPopup(card) {
     btnMove.style.visibility = "hidden";
   });
 
-  /// boutton delete
+  /// bouton delete
   var btnDelete = document.createElement("button");
   btnDelete.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
   btnDelete.classList.add("btn-delete");
   classBtn.appendChild(btnDelete);
 
   function deletePost() {
-    btnDelete.addEventListener("click", () => {
+
+    btnDelete.addEventListener("click", (e) => {
+      e.preventDefault();
+      var deleteId = e.target.parentElement.parentElement.parentElement.dataset.number;
       figureModal.parentNode.removeChild(figureModal);
-      // card.parentNode.removeChild(card);
+      deletePostGallery(deleteId);
     });
   }
   deletePost();
 
-  /// test edite
+  /// text edite
   var figcaptionModal = document.createElement("figcaption");
   figcaptionModal.textContent = "éditer";
   figureModal.appendChild(figcaptionModal);
@@ -196,25 +199,38 @@ function DisplayEdit() {
     }
   }
 }
-DisplayEdit();
+DisplayEdit(); // Pour l'afficher
 
 //* First Pop-up
 
 var popUp = document.getElementById("pop-up");
+// popUp => div qui contient tout la pop-up
 var editGallery = document.getElementById("edit-gallery");
+// editGallery => btn modifier 
+var backgroundOpacity = document.getElementsByClassName("background-opacity")[0]
+
 
 editGallery.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
+  backgroundOpacity.classList.toggle("opacity")
+  backgroundOpacity.classList.toggle("active-popUp")
 });
+// faire apparaître la pop up au click
 
 closeBtn.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
+  backgroundOpacity.classList.toggle("active-popUp")
+  designDisplay();
+
 });
+// fermer la pop up au click
 
 //* Second popup
 
 var newPopUp = document.getElementById("new-pop-up");
+// newPopUp => div qui contient la 2 pop-up
 var btnAddPictures = document.querySelector(".btn-add-post");
+// btnAddPictures => btn "Ajouter une photo"
 
 btnAddPictures.addEventListener("click", (e) => {
   newPopUp.classList.toggle("active-popUp");
@@ -223,11 +239,13 @@ btnAddPictures.addEventListener("click", (e) => {
 
 closeBtn2.addEventListener("click", () => {
   newPopUp.classList.toggle("active-popUp");
+  backgroundOpacity.classList.toggle("active-popUp")
 });
 backBtn.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
   newPopUp.classList.toggle("active-popUp");
 });
+// => btn retour
 
 
 //*------------------------------------
@@ -235,7 +253,7 @@ backBtn.addEventListener("click", () => {
 //*------------------------------------
 
 async function newPost(inputData) {
-  /// Poster nouveau post
+  // nouveau post
   await fetch("http://localhost:5678/api/works/", {
     method: "POST",
     headers: {
@@ -258,24 +276,28 @@ async function newPost(inputData) {
 
 document.querySelectorAll(".file-upload__button").forEach((button) => {
   const hiddenInput = button.parentElement.querySelector(".file-upload__input");
-  const dropZoneElement = hiddenInput.closest(".drop-zone");
+  const dropZoneElement = document.querySelector(".drop-zone");
   var inputFiles = [];
 
   button.addEventListener("click", () => {
     hiddenInput.click();
   });
+  // au click sur le btn, active input pour l'upload
 
   hiddenInput.addEventListener("change", () => {
     inputFiles = hiddenInput.files;
+    // console.log(inputFiles);
     if (inputFiles.length) {
       updadeThumbnail(dropZoneElement, inputFiles[0]);
     }
   });
   function updadeThumbnail(dropZoneElement, inputFiles) {
-    // console.log(dropZoneElement);
+    console.log(dropZoneElement);
     // console.log(inputFiles);
     var dropZoneToggle = document.querySelector(".drop-zone-toggle");
+    // div => i + input + btn + p
     var thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+    // futur emplacement pour img
 
     /// First time = no thumbnail element, so lets creat it
     if (!thumbnailElement) {
@@ -285,7 +307,8 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
       dropZoneElement.appendChild(thumbnailElement);
       
       /// Reset after click icon
-      backBtn.addEventListener("click", () => {
+      backBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         dropZoneToggle.style.display = "flex"
         thumbnailElement.parentNode.removeChild(thumbnailElement);
       })
@@ -299,19 +322,11 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
       const reader = new FileReader();
       reader.onload = () => {
         thumbnailElement.src = reader.result;
-        console.log(inputFiles);
       };
       reader.readAsDataURL(inputFiles);
     }
   }
 });
-
-const openConfirmPopUp = document.querySelector(".open-confirm-popUp")
-const confirmPost = document.querySelector(".confirm-pop-up")
-
-openConfirmPopUp.addEventListener("click",() => {
-  confirmPost.classList.toggle("active-popUp");
-})
 
 const formNewPost = document.getElementById("form-New-Post");
 
@@ -331,44 +346,28 @@ formNewPost.addEventListener("submit", (e) => {
   console.log(formData);
   
   newPost(formData);
-  
 
-
-  
 });
+
 
 //*------------------------------------
 //* Delete Post
 //*------------------------------------
 
-function deletePost() {
-  fetch("http://localhost:5678/api/works/1", {
+function deletePostGallery(id) {
+  console.log(`http://localhost:5678/api/works/${id}`);
+  fetch(`http://localhost:5678/api/works/${id}`, {
     /// dans url ajouter ${parametre}
     method: "DELETE",
     headers: {
       "Authorization" : `Bearer ${userToken}`
     }
   })
-  .then((res) => {
-    if (res.ok) {
-      // deletePost();
-      return res.json();
-    }
-  })
-  .then((data) => {
-    
+}
+function displayDeletePost(formData) {
+  var btnDelete = document.querySelector(".btn-delete")
+  btnDelete.addEventListener("click", () => {
+    formData.classList.remove();
+    console.log("test");
   })
 }
-// function displayDeletePost(btnDelete) {
-//   var btnDelete = document.querySelector(".btn-delete")
-//   btnDelete.addEventListener("click", () => {
-//     console.log("test");
-//   })
-// }
-
-
-
-//! Modifier retour newPost (message confirm)
-//! Gerer la delete de l' api
-/// creer function et la rappelet dans deletPost
-//! gerer le css

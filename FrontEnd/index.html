@@ -49,13 +49,14 @@
 
 
 	<section id="portfolio">
+
 		<div class="my-project">
 			<h2>Mes Projets</h2>
 			<div id="edit-gallery">
 				<p><i class="fa-regular fa-pen-to-square"></i>modifier</p>
 			</div>
 			
-			
+			<!-- Fisrt pop-up -->
 				<div id="pop-up">
 					<i class="fa-solid fa-xmark" id="closeBtn"></i>
 					<h3>Galerie photo</h3>
@@ -66,6 +67,7 @@
 					<div id="delete-galery"><a href="">Supprimer la galerie</a></div>
 				</div>
 			
+				<!-- Second pop-up -->
 					<div id="new-pop-up">
 						<div class="new-pop-up-icon">
 							<i class="fa-solid fa-arrow-left" id="backBtn"></i>
@@ -77,13 +79,14 @@
 
 							<div class="add-new-post">
 								<div class="drop-zone">
-								<i class="fa-solid fa-image"></i>
-								<input class="file-upload__input" type="file" name="myFile" id="myFile">
-								<button class="file-upload__button" type="button">+ Ajouter photo</button>
-								<p>jpg,png : 4mo max</p>
+								<div class="drop-zone-toggle">
+									<i class="fa-solid fa-image"></i>
+									<input class="file-upload__input" type="file" name="myFile" id="myFile">
+									<button class="file-upload__button" type="button">+ Ajouter photo</button>
+									<p>jpg,png : 4mo max</p>
+								</div>
 							</div>								
 							</div>
-
 							<form action="" method="post" id="form-New-Post">
 								<label for="title">Titre</label>
 								<input type="text" name="title" id="title">
@@ -95,15 +98,23 @@
 									<option value="3">Hotels & restaurants</option>
 								</select>
 								<div class="edit-bar"></div>
-								<input class="confirm-post" type="submit" value="Valider">
+								<input class="open-confirm-popUp" type="submit" value="Valider">
 							</form>
 						</div>
+					</div>
 
-
+					<!-- confirm pop-up -->
+					<div class="confirm-pop-up">
+						<div class="new-pop-up-icon">
+							<i class="fa-solid fa-xmark" id="closeBtn3"></i>
+						</div>
+						<h4>Clicker sur confirmer pour poster vôtre nouveau Post</h4>
+						<input class="confirm-post" type="submit" value="Valider">
 					</div>
 
 		</div>
 
+		<!-- button filter  -->
 		<div id="filterList">
 			<button class="btnAll" type="button" name="checked">Tous</button>
 		</div>
@@ -113,6 +124,7 @@
 
 	</section>
 
+	<!-- Formulaire Contact  -->
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>

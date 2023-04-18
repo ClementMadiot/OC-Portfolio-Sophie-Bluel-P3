@@ -1,30 +1,40 @@
-//*------------------------------------
-//* Pictures
-//*------------------------------------
-var picturesData = []; /// Boite
+//*----------------------------------------
+//* Récupérer l'API 
+//*----------------------------------------
+var picturesData = []; // Boite
 
 async function fetchPictures() {
-  /// Aller cherhcer les photos
-  await fetch("http://localhost:5678/api/works") /// attend que le await soit exécuté avant de faire la suite
+// Récupération des données de l'API avec la méthode fetch
+  await fetch("http://localhost:5678/api/works") 
+// attend que le await soit exécuté avant de faire la suite
     .then((response) => response.json())
+// Données transmise sous la forme d'un "Objet"
     .then((data) => (picturesData = data));
-  // console.log(picturesData);
+// Afficher les données dans un tableau
+// console.log(picturesData);
 }
 
+//*------------------------------------
+//* élément de l'APLI
+//*------------------------------------
+
 function createFigure(card) {
-  var figure = document.createElement("figure"); /// creer une balise figure
-  figure.dataset.number = card.category.id; /// dataset bouge pas
+// card = nom du paramètre de l'array => picturesData
+  var figure = document.createElement("figure"); 
+// création de la balise 
+  figure.dataset.number = card.category.id;
+// donner le paramètre "id" pour les filtrer
 
   var img = document.createElement("img");
   img.crossOrigin = "anonymous";
-  img.src = card.imageUrl;
-  figure.appendChild(img); /// appendchild = enfant de figure
+  img.src = card.imageUrl; // Récupérer l'URL de img
+  figure.appendChild(img); // Mettre en parent "figure"
 
   var figcaption = document.createElement("figcaption");
-  figcaption.textContent = card.title;
+  figcaption.textContent = card.title; // Récupérer le titre
   figure.appendChild(figcaption);
 
-  return figure;
+  return figure; // L'exécuter 
 }
 
 function editPopup(card) {
@@ -62,9 +72,13 @@ function editPopup(card) {
   btnDelete.classList.add("btn-delete");
   classBtn.appendChild(btnDelete);
 
-  btnDelete.addEventListener("click", () => {
-    figureModal.innerHTML = "";
-  });
+  function deletePost() {
+    btnDelete.addEventListener("click", () => {
+      figureModal.parentNode.removeChild(figureModal);
+      // card.parentNode.removeChild(card);
+    });
+  }
+  deletePost();
 
   /// test edite
   var figcaptionModal = document.createElement("figcaption");
@@ -73,45 +87,58 @@ function editPopup(card) {
 
   return figureModal;
 }
+//*------------------------------------
+//* Afficher les éléments
+//*------------------------------------
 
 async function designDisplay(catId = 0) {
-  /// Affichage des photos
+// Afficher les photos
   await fetchPictures();
+// Jouer la fonction pour affichier les données
 
   const gallery = document.querySelector(".gallery");
-  gallery.innerHTML = ""; /// Delete pictures after deselect
+  gallery.innerHTML = "";  
+  // Efface le contenue / évite la répétiton 
 
   const galleryModal = document.getElementById("modalGallery");
+  galleryModal.innerHTML = "";
+  // Même paramètre pour la Pop-up
 
   const allPictures = document.querySelector(".btnAll");
+  // Balise bouton => "tous"
   allPictures.addEventListener("click", () => {
+  // événement au click joue la fonction
     designDisplay();
   });
 
   picturesData.forEach((card) => {
-    /// card = nom que je donne a l'element
+  // pour chaque élément de "picturesData"
+    //card = nom que je donne a l'élément
 
     if (catId == 0 || catId == card.category.id) {
+// Paramètre pour le filtre
       var figure = createFigure(card);
+// Récupère le numéro (id) pour chaque figure 
       gallery.appendChild(figure);
+// la div gallery devient son parent 
     }
     var figureModal = editPopup(card);
     galleryModal.appendChild(figureModal);
   });
 }
-designDisplay();
+designDisplay(); 
 
 //*------------------------------------
 //* Filter
 //*------------------------------------
 
-var filterData = [];
+var filterData = []; // Boîte
 
 async function fetchFilter() {
   await fetch("http://localhost:5678/api/categories")
+// Récupérer les boutons "filter"
     .then((response) => response.json())
     .then((filter) => (filterData = filter));
-
   // console.log(filterData);
 }
 
@@ -119,41 +146,50 @@ async function filterDisplay() {
   await fetchFilter();
 
   const filterList = document.getElementById("filterList");
+  // Séléctionner l'id 
 
-  filterData.forEach((load) => {
+  filterData.forEach((card) => {
+// Créer une règle pour chaque button 
     var myBtn = document.createElement("button");
-    myBtn.dataset.number = load.id;
-    myBtn.textContent = load.name;
+    myBtn.dataset.number = card.id;
+// Récupérer l'id pour les filtrer 
+    myBtn.textContent = card.name;
+// Récupérer le nom du POST
     myBtn.addEventListener("click", () => {
-      // console.log(myBtn);
-      // console.log(load.id);
-      designDisplay(load.id);
+// Créer un événement au click
+    console.log(myBtn); // l'élément
+    console.log(card.id); // Son numéro de filtre
+      designDisplay(card.id);
+// Jouer la fonction pour chaque élément
     });
     filterList.appendChild(myBtn);
+// Mettre chaque buttons dans la div
   });
 }
-filterDisplay();
+filterDisplay(); // Jouer la fonction
 
 //*------------------------------------
 //* Login
 //*------------------------------------
 
-/// Redirection au login
+// Redirection au login
 var btnLogin = document.querySelector(".btn-login");
 btnLogin.addEventListener("click", () => {
   window.location.href = "./assets/login.html";
 });
 
-/// Recuperer userId
+// Récuperer le "token" 
 let userToken = localStorage.getItem("token");
 
-/// Afficher les bouttons modifiers
+// Affiche les boutons "modifier"
 function DisplayEdit() {
   var btnEdit = document.getElementById("edit-gallery");
   var btnModal = document.querySelectorAll(".btn-modal");
   var btnLogin = document.querySelector(".btn-login");
   for (var i = 0; i < btnModal.length; i++) {
+  // for => selectionne tous les boutons "modifier"
     if (userToken) {
+  // if => si l'utilisateur a son token
       btnModal[i].style.display = "block";
       btnEdit.style.display = "block";
       btnLogin.textContent = "Logout";
@@ -193,7 +229,6 @@ backBtn.addEventListener("click", () => {
   newPopUp.classList.toggle("active-popUp");
 });
 
-//-------------------------------------------
 
 //*------------------------------------
 //* New Post
@@ -239,15 +274,26 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
   function updadeThumbnail(dropZoneElement, inputFiles) {
     // console.log(dropZoneElement);
     // console.log(inputFiles);
-
+    var dropZoneToggle = document.querySelector(".drop-zone-toggle");
     var thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
     /// First time = no thumbnail element, so lets creat it
     if (!thumbnailElement) {
       thumbnailElement = document.createElement("img");
       thumbnailElement.classList.add("drop-zone__thumb");
+      dropZoneToggle.style.display = "none"
       dropZoneElement.appendChild(thumbnailElement);
-    }
+      
+      /// Reset after click icon
+      backBtn.addEventListener("click", () => {
+        dropZoneToggle.style.display = "flex"
+        thumbnailElement.parentNode.removeChild(thumbnailElement);
+      })
+      closeBtn2.addEventListener("click", () => {
+        dropZoneToggle.style.display = "flex"
+        thumbnailElement.parentNode.removeChild(thumbnailElement);
+      })
+    } 
     /// Show thumbnail for image files
     if (inputFiles.type.startsWith("image/")) {
       const reader = new FileReader();
@@ -260,13 +306,20 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
   }
 });
 
+const openConfirmPopUp = document.querySelector(".open-confirm-popUp")
+const confirmPost = document.querySelector(".confirm-pop-up")
+
+openConfirmPopUp.addEventListener("click",() => {
+  confirmPost.classList.toggle("active-popUp");
+})
+
 const formNewPost = document.getElementById("form-New-Post");
+
 formNewPost.addEventListener("submit", (e) => {
-  console.log("test");
   e.preventDefault();
-
+  
   const formData = new FormData();
-
+  
   //// Les relier à l'API
   const title = document.getElementById("title");
   const category = document.getElementById("category");
@@ -278,7 +331,15 @@ formNewPost.addEventListener("submit", (e) => {
   console.log(formData);
   
   newPost(formData);
+  
+
+
+  
 });
+
+//*------------------------------------
+//* Delete Post
+//*------------------------------------
 
 function deletePost() {
   fetch("http://localhost:5678/api/works/1", {
@@ -290,14 +351,20 @@ function deletePost() {
   })
   .then((res) => {
     if (res.ok) {
-
+      // deletePost();
+      return res.json();
     }
   })
   .then((data) => {
     
   })
-  
 }
+// function displayDeletePost(btnDelete) {
+//   var btnDelete = document.querySelector(".btn-delete")
+//   btnDelete.addEventListener("click", () => {
+//     console.log("test");
+//   })
+// }
 
 
 

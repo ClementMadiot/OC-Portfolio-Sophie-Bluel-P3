@@ -77,8 +77,12 @@ function editPopup(card) {
     btnDelete.addEventListener("click", (e) => {
       e.preventDefault();
       var deleteId = e.target.parentElement.parentElement.parentElement.dataset.number;
+      console.log(deleteId);
+      // deleteId => supprimer l'id de la figure
       figureModal.parentNode.removeChild(figureModal);
+      // supprimer le post de la pop up
       deletePostGallery(deleteId);
+      // Jouer deleteId pour supprimer le post du main
     });
   }
   deletePost();
@@ -364,10 +368,4 @@ function deletePostGallery(id) {
     }
   })
 }
-function displayDeletePost(formData) {
-  var btnDelete = document.querySelector(".btn-delete")
-  btnDelete.addEventListener("click", () => {
-    formData.classList.remove();
-    console.log("test");
-  })
-}
+

@@ -195,7 +195,6 @@ nav .btn-login {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	overflow: hidden;
 }
 .gallery img {
 	width: 100%;
@@ -365,6 +364,8 @@ nav .btn-login {
 }
 .new-post div {
 	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 #new-pop-up input,
 #new-pop-up select{

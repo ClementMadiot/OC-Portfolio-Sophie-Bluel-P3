@@ -267,7 +267,6 @@ async function newPost(inputData) {
   })
     .then((res) => {
       if (res.ok) {
-        createFigure();
         return res.json();
       } else {
         alert("There was an error");
@@ -289,7 +288,7 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
   // au click sur le btn, active input pour l'upload
 
   hiddenInput.addEventListener("change", () => {
-    inputFiles = hiddenInput.files;
+    // inputFiles = hiddenInput.files;
     // console.log(inputFiles);
     if (inputFiles.length) {
       updadeThumbnail(dropZoneElement, inputFiles[0]);
@@ -359,7 +358,7 @@ formNewPost.addEventListener("submit", (e) => {
 //*------------------------------------
 
 function deletePostGallery(id) {
-  console.log(`http://localhost:5678/api/works/${id}`);
+  // console.log(`http://localhost:5678/api/works/${id}`);
   fetch(`http://localhost:5678/api/works/${id}`, {
     /// dans url ajouter ${parametre}
     method: "DELETE",

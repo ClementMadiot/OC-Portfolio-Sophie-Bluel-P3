@@ -182,6 +182,7 @@ nav .btn-login {
 }
 #edit-gallery {
 	cursor: pointer;
+	display: none;
 }
 .active-popUp {
 	display: block !important;
@@ -523,13 +524,14 @@ margin: auto;
 }
 #contact form {
 	text-align: left;
-	margin-top:10px;
+	margin:10px auto;
 	display: flex;
 	flex-direction: column;
+	width: 70%;
 }
 
 #contact input {
-	height: 40px;
+	height: 45px;
 	font-size: 1.1em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);

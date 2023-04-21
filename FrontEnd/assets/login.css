@@ -32,6 +32,9 @@ header {
 #contact input[type="submit"]{
   cursor: pointer;
 }
+.login-form {
+  width: 70%;
+}
 #forget-password {
   text-align: center;
 }
@@ -44,7 +47,4 @@ footer nav li {
   margin-top: 10rem;
 }
 
-
-
-/* //-------------------------------- */
 

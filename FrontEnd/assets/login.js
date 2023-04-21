@@ -53,9 +53,9 @@ form.addEventListener("submit", (e) => {
   // Si il reconnaît l'email et password joue la fonction 
   }
 });
+//-----------------------------------
 
 // sophie.bluel@test.tld
 //  S0phie
 
 
-//-----------------------------------

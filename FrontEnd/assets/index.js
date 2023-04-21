@@ -1,17 +1,17 @@
 //*----------------------------------------
-//* Récupérer l'API 
+//* Récupérer l'API
 //*----------------------------------------
 var picturesData = []; // Boite
 
 async function fetchPictures() {
-// Récupération des données de l'API avec la méthode fetch
-  await fetch("http://localhost:5678/api/works") 
-// attend que le await soit exécuté avant de faire la suite
+  // Récupération des données de l'API avec la méthode fetch
+  await fetch("http://localhost:5678/api/works")
+    // attend que le await soit exécuté avant de faire la suite
     .then((response) => response.json())
-// Données transmise sous la forme d'un "Objet"
+    // Données transmise sous la forme d'un "Objet"
     .then((data) => (picturesData = data));
-// Afficher les données dans un tableau
-// console.log(picturesData);
+  // Afficher les données dans un tableau
+  // console.log(picturesData);
 }
 
 //*------------------------------------
@@ -19,11 +19,11 @@ async function fetchPictures() {
 //*------------------------------------
 
 function createFigure(card) {
-// card = nom du paramètre de l'array => picturesData
-  var figure = document.createElement("figure"); 
-// création de la balise 
+  // card = nom du paramètre de l'array => picturesData
+  var figure = document.createElement("figure");
+  // création de la balise
   figure.dataset.number = card.category.id;
-// donner le paramètre "id" pour les filtrer
+  // donner le paramètre "id" pour les filtrer
 
   var img = document.createElement("img");
   img.crossOrigin = "anonymous";
@@ -34,7 +34,7 @@ function createFigure(card) {
   figcaption.textContent = card.title; // Récupérer le titre
   figure.appendChild(figcaption);
 
-  return figure; // L'exécuter 
+  return figure; // L'exécuter
 }
 
 function editPopup(card) {
@@ -73,10 +73,10 @@ function editPopup(card) {
   classBtn.appendChild(btnDelete);
 
   function deletePost() {
-
     btnDelete.addEventListener("click", (e) => {
       e.preventDefault();
-      var deleteId = e.target.parentElement.parentElement.parentElement.dataset.number;
+      var deleteId =
+        e.target.parentElement.parentElement.parentElement.dataset.number;
       console.log(deleteId);
       // deleteId => supprimer l'id de la figure
       figureModal.parentNode.removeChild(figureModal);
@@ -99,13 +99,13 @@ function editPopup(card) {
 //*------------------------------------
 
 async function designDisplay(catId = 0) {
-// Afficher les photos
+  // Afficher les photos
   await fetchPictures();
-// Jouer la fonction pour affichier les données
+  // Jouer la fonction pour affichier les données
 
   const gallery = document.querySelector(".gallery");
-  gallery.innerHTML = "";  
-  // Efface le contenue / évite la répétiton 
+  gallery.innerHTML = "";
+  // Efface le contenue / évite la répétiton
 
   const galleryModal = document.getElementById("modalGallery");
   galleryModal.innerHTML = "";
@@ -114,26 +114,26 @@ async function designDisplay(catId = 0) {
   const allPictures = document.querySelector(".btnAll");
   // Balise bouton => "tous"
   allPictures.addEventListener("click", () => {
-  // événement au click joue la fonction
+    // événement au click joue la fonction
     designDisplay();
   });
 
   picturesData.forEach((card) => {
-  // pour chaque élément de "picturesData"
+    // pour chaque élément de "picturesData"
     //card = nom que je donne a l'élément
 
     if (catId == 0 || catId == card.category.id) {
-// Paramètre pour le filtre
+      // Paramètre pour le filtre
       var figure = createFigure(card);
-// Récupère le numéro (id) pour chaque figure 
+      // Récupère le numéro (id) pour chaque figure
       gallery.appendChild(figure);
-// la div gallery devient son parent 
+      // la div gallery devient son parent
     }
     var figureModal = editPopup(card);
     galleryModal.appendChild(figureModal);
   });
 }
-designDisplay(); 
+designDisplay();
 
 //*------------------------------------
 //* Filter
@@ -143,7 +143,7 @@ var filterData = []; // Boîte
 
 async function fetchFilter() {
   await fetch("http://localhost:5678/api/categories")
-// Récupérer les boutons "filter"
+    // Récupérer les boutons "filter"
     .then((response) => response.json())
     .then((filter) => (filterData = filter));
   // console.log(filterData);
@@ -153,24 +153,24 @@ async function filterDisplay() {
   await fetchFilter();
 
   const filterList = document.getElementById("filterList");
-  // Séléctionner l'id 
+  // Séléctionner l'id
 
   filterData.forEach((card) => {
-// Créer une règle pour chaque button 
+    // Créer une règle pour chaque button
     var myBtn = document.createElement("button");
     myBtn.dataset.number = card.id;
-// Récupérer l'id pour les filtrer 
+    // Récupérer l'id pour les filtrer
     myBtn.textContent = card.name;
-// Récupérer le nom du POST
+    // Récupérer le nom du POST
     myBtn.addEventListener("click", () => {
-// Créer un événement au click
-    console.log(myBtn); // l'élément
-    console.log(card.id); // Son numéro de filtre
+      // Créer un événement au click
+      console.log(myBtn); // l'élément
+      console.log(card.id); // Son numéro de filtre
       designDisplay(card.id);
-// Jouer la fonction pour chaque élément
+      // Jouer la fonction pour chaque élément
     });
     filterList.appendChild(myBtn);
-// Mettre chaque buttons dans la div
+    // Mettre chaque buttons dans la div
   });
 }
 filterDisplay(); // Jouer la fonction
@@ -185,7 +185,7 @@ btnLogin.addEventListener("click", () => {
   window.location.href = "./assets/login.html";
 });
 
-// Récuperer le "token" 
+// Récuperer le "token"
 let userToken = localStorage.getItem("token");
 
 // Affiche les boutons "modifier"
@@ -194,9 +194,9 @@ function DisplayEdit() {
   var btnModal = document.querySelectorAll(".btn-modal");
   var btnLogin = document.querySelector(".btn-login");
   for (var i = 0; i < btnModal.length; i++) {
-  // for => selectionne tous les boutons "modifier"
+    // for => selectionne tous les boutons "modifier"
     if (userToken) {
-  // if => si l'utilisateur a son token
+      // if => si l'utilisateur a son token
       btnModal[i].style.display = "block";
       btnEdit.style.display = "block";
       btnLogin.textContent = "Logout";
@@ -210,22 +210,21 @@ DisplayEdit(); // Pour l'afficher
 var popUp = document.getElementById("pop-up");
 // popUp => div qui contient tout la pop-up
 var editGallery = document.getElementById("edit-gallery");
-// editGallery => btn modifier 
-var backgroundOpacity = document.getElementsByClassName("background-opacity")[0]
-
+// editGallery => btn modifier
+var backgroundOpacity =
+  document.getElementsByClassName("background-opacity")[0];
 
 editGallery.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
-  backgroundOpacity.classList.toggle("opacity")
-  backgroundOpacity.classList.toggle("active-popUp")
+  backgroundOpacity.classList.toggle("opacity");
+  backgroundOpacity.classList.toggle("active-popUp");
 });
 // faire apparaître la pop up au click
 
 closeBtn.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
-  backgroundOpacity.classList.toggle("active-popUp")
+  backgroundOpacity.classList.toggle("active-popUp");
   designDisplay();
-
 });
 // fermer la pop up au click
 
@@ -243,7 +242,7 @@ btnAddPictures.addEventListener("click", (e) => {
 
 closeBtn2.addEventListener("click", () => {
   newPopUp.classList.toggle("active-popUp");
-  backgroundOpacity.classList.toggle("active-popUp")
+  backgroundOpacity.classList.toggle("active-popUp");
 });
 backBtn.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
@@ -251,19 +250,18 @@ backBtn.addEventListener("click", () => {
 });
 // => btn retour
 
-
 //*------------------------------------
 //* New Post
 //*------------------------------------
 
 async function newPost(inputData) {
   // nouveau post
-  await fetch("http://localhost:5678/api/works/", {
+  await fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: {
-      "Authorization" : `Bearer ${userToken}`
+      Authorization: `Bearer ${userToken}`,
     },
-    body: (inputData),
+    body: inputData,
   })
     .then((res) => {
       if (res.ok) {
@@ -288,14 +286,14 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
   // au click sur le btn, active input pour l'upload
 
   hiddenInput.addEventListener("change", () => {
-    // inputFiles = hiddenInput.files;
+    inputFiles = hiddenInput.files;
     // console.log(inputFiles);
     if (inputFiles.length) {
       updadeThumbnail(dropZoneElement, inputFiles[0]);
     }
   });
   function updadeThumbnail(dropZoneElement, inputFiles) {
-    console.log(dropZoneElement);
+    // console.log(dropZoneElement);
     // console.log(inputFiles);
     var dropZoneToggle = document.querySelector(".drop-zone-toggle");
     // div => i + input + btn + p
@@ -306,20 +304,20 @@ document.querySelectorAll(".file-upload__button").forEach((button) => {
     if (!thumbnailElement) {
       thumbnailElement = document.createElement("img");
       thumbnailElement.classList.add("drop-zone__thumb");
-      dropZoneToggle.style.display = "none"
+      dropZoneToggle.style.display = "none";
       dropZoneElement.appendChild(thumbnailElement);
-      
+
       /// Reset after click icon
       backBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        dropZoneToggle.style.display = "flex"
+        dropZoneToggle.style.display = "flex";
         thumbnailElement.parentNode.removeChild(thumbnailElement);
-      })
+      });
       closeBtn2.addEventListener("click", () => {
-        dropZoneToggle.style.display = "flex"
+        dropZoneToggle.style.display = "flex";
         thumbnailElement.parentNode.removeChild(thumbnailElement);
-      })
-    } 
+      });
+    }
     /// Show thumbnail for image files
     if (inputFiles.type.startsWith("image/")) {
       const reader = new FileReader();
@@ -335,9 +333,9 @@ const formNewPost = document.getElementById("form-New-Post");
 
 formNewPost.addEventListener("submit", (e) => {
   e.preventDefault();
-  
+
   const formData = new FormData();
-  
+
   //// Les relier à l'API
   const title = document.getElementById("title");
   const category = document.getElementById("category");
@@ -345,13 +343,11 @@ formNewPost.addEventListener("submit", (e) => {
   formData.append("image", files.files[0]);
   formData.append("title", title.value);
   formData.append("category", parseInt(category.value));
-  /// integer = nombre 
-  console.log(formData);
-  
+  /// integer = nombre
+  // console.log(formData);
+
   newPost(formData);
-
 });
-
 
 //*------------------------------------
 //* Delete Post
@@ -363,8 +359,7 @@ function deletePostGallery(id) {
     /// dans url ajouter ${parametre}
     method: "DELETE",
     headers: {
-      "Authorization" : `Bearer ${userToken}`
-    }
-  })
+      Authorization: `Bearer ${userToken}`,
+    },
+  });
 }
-

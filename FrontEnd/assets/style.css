@@ -527,7 +527,7 @@ margin: auto;
 	margin:10px auto;
 	display: flex;
 	flex-direction: column;
-	width: 70%;
+	/* width: 70%; */
 }
 
 #contact input {

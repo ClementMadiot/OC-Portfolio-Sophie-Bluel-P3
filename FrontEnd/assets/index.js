@@ -77,7 +77,7 @@ function editPopup(card) {
       e.preventDefault();
       var deleteId =
         e.target.parentElement.parentElement.parentElement.dataset.number;
-      console.log(deleteId);
+      // console.log(deleteId);
       // deleteId => supprimer l'id de la figure
       figureModal.parentNode.removeChild(figureModal);
       // supprimer le post de la pop up
@@ -207,6 +207,8 @@ DisplayEdit(); // Pour l'afficher
 
 //* First Pop-up
 
+var galleryImg = document.querySelector(".gallery");
+
 var popUp = document.getElementById("pop-up");
 // popUp => div qui contient tout la pop-up
 var editGallery = document.getElementById("edit-gallery");
@@ -216,7 +218,6 @@ var backgroundOpacity =
 
 editGallery.addEventListener("click", () => {
   popUp.classList.toggle("active-popUp");
-  backgroundOpacity.classList.toggle("opacity");
   backgroundOpacity.classList.toggle("active-popUp");
 });
 // faire apparaître la pop up au click
@@ -345,8 +346,18 @@ formNewPost.addEventListener("submit", (e) => {
   formData.append("category", parseInt(category.value));
   /// integer = nombre
   // console.log(formData);
+  if (newPost(formData)) {
+    var dropZoneToggle = document.querySelector(".drop-zone-toggle");
+    var thumbnailElement = document.querySelector(".drop-zone__thumb");
+    var category0 = document.getElementById("category")[0];
 
-  newPost(formData);
+    newPopUp.classList.toggle("active-popUp");
+    backgroundOpacity.classList.toggle("active-popUp");
+    dropZoneToggle.style.display = "flex";
+    thumbnailElement.parentNode.removeChild(thumbnailElement);
+    title.value = "";
+    category.value = "";
+  }
 });
 
 //*------------------------------------

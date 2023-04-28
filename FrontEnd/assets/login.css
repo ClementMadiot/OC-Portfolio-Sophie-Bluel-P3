@@ -2,6 +2,7 @@
 
 nav .bold-log {
   cursor: default;
+  font-weight: bold;
 }
 main {
   margin-top: 10rem;
@@ -25,6 +26,9 @@ header {
   margin-top: 10px;
   opacity: 0;
   transition: 0.3s;
+}
+#contact {
+  width: 28%;
 }
 #contact h2 {
   margin-bottom: 0;

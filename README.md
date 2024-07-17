@@ -1,38 +1,43 @@
 <div align="center">
-    <a href="https://kasa-cm.netlify.app/" target="_blank">
-      <img src="public/kasa.png" alt="Project Kasa">
-    </a>
-  <h3 align="center">Kasa</h3>
+ <img src="./FrontEnd/assets/sophie-buel.png" alt="portfolio sophie bluel">
+  <h3 align="center">Portfolio Sophie Bluel</h3>
 </div>
 
-##  <br /> 📋 <a name="table">Summary</a>
+## <br /> 📋 <a name="table">Summary</a>
 
 - [Introduction](#introduction)
 - [Technology Used](#tech-stack)
 - [Launch App](#launch-app)
 
-##  <br /> <a name="introduction">✨ Introduction</a>
+## <br /> <a name="introduction">✨ Introduction</a>
 
 Kasa is a real estate rental web application with React
+
 - Building dynamic and interactive web applications using React.js and other related technologies.
 - Implementing responsive design to ensure seamless user experience across all devices.
 - Guaranteeing cross-browser compatibility to make my applications accessible on various browsers.
 - Utilizing technologies like MongoDB and Express.js to create functional databases for data storage and retrieval.
 
-##  <br /> <a name="tech-stack">🛠 Technology Used</a>
-
-- **React** is a javaScript library for building user interfaces (UIs). Uses a component-based approach where complex UIs are built from smaller, reusable components. Focuses on the view layer (what the user sees) of a web application.
+## <br /> <a name="tech-stack">🛠 Technology Used</a>
 
 - **Node.js** is a runtime environment that allows you to execute JavaScript code server-side. It's built on Chrome's V8 JavaScript engine and is widely used for building scalable network applications, APIs, and servers.
 
-- **React-router** is a routing library for React applications that Manages navigation between different views (pages) within the application. Helps keep track of the URL and displays the corresponding component based on the route.
+- **Express** is a popular Node.js web framework for building web applications and APIs.
 
-- **Sass** is a preprocessor for CSS that adds features like variables, nesting, mixins, and functions.
+- **Multer** is a Node.js middleware for handling multipart/form-data (file uploads) in Express applications.
 
-- **Styled-component** is a library for styling React components that allows to write CSS directly within your React components using template literals. 
+- **Swagger** is an open-source framework for designing, documenting, and consuming RESTful APIs.
+
+- **bcrypt** is a password hashing library for Node.js that securely stores passwords.
+
+- **jsonwebtoken**: is a library for creating and verifying JSON Web Tokens (JWT) for authentication in Node.js applications.
+
+- **Sequelize**: is an ORM (Object-Relational Mapper) for Node.js that simplifies interactions with relational databases.
+
+- **cors**(Cross-Origin Resource Sharing): is a browser security mechanism that restricts web pages from making requests to a different domain than the one that served the web page. It allows controlled access for specific resources.
 
 
-##  <br /> <a name="launch-app">🚀 Launch App</a>
+## <br /> <a name="launch-app">🚀 Launch App</a>
 
 <br/>**Cloning the Repository**
 
@@ -50,7 +55,6 @@ git clone {git remote URL}
 
 > Return in the frontend to load the Html
 
-
 <br/>**Test account for Sophie Bluel**
 
 ```bash
@@ -58,7 +62,7 @@ email: sophie.bluel@test.tld
 ```
 
 ```bash
-password: S0phie 
+password: S0phie
 ```
 
 <br/>**Swagger API**

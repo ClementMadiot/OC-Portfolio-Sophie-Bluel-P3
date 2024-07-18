@@ -11,12 +11,17 @@
 
 ## <br /> <a name="introduction">✨ Introduction</a>
 
-Kasa is a real estate rental web application with React
+[EN] : This project requires you to create a dynamic web page for an interior designer's website using JavaScript and communicating with an API.
 
-- Building dynamic and interactive web applications using React.js and other related technologies.
-- Implementing responsive design to ensure seamless user experience across all devices.
-- Guaranteeing cross-browser compatibility to make my applications accessible on various browsers.
-- Utilizing technologies like MongoDB and Express.js to create functional databases for data storage and retrieval.
+- Handling user events with JavaScript.
+- Manipulating DOM elements with JavaScript.
+- Retrieving user data in JavaScript through forms.
+
+[FR] : Ce projet vous engage à créer une page web dynamique pour le site internet d'une architecte d'intérieur en utilisant JavaScript et en communiquant avec une API.
+
+- Gérer les événements utilisateurs avec JavaScript.
+- Manipuler les éléments du DOM avec JavaScript.
+- Récupérer les données utilisateurs dans le JavaScript via des formulaires.
 
 ## <br /> <a name="tech-stack">🛠 Technology Used</a>
 
